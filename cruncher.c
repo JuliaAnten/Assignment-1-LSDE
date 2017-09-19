@@ -160,17 +160,10 @@ void query(unsigned short qid, unsigned short artist, unsigned short areltd[], u
 		person = &person_map[person_offset];
 		knows = &person_map[knows_offset];
 
-		// mutuality check
-		for (knows_offset2 = person->knows_first;
-			knows_offset2 < person->knows_first + person->knows_n;
-			knows_offset2++) {
+		//Print Results to file
+		fprintf(outfile, "%d|%d|%lu|%lu\n", qid, results[result_idx].score, 
+		person->person_id, knows->person_id);
 
-			// if friendship is mutual, print to output file
-			if(knows_map[knows_offset2] == knows_offset) {
-				fprintf(outfile, "%d|%d|%lu|%lu\n", qid, results[result_idx].score, 
-				person->person_id, knows->person_id);
-			}
-		}
 	}
 }
 
