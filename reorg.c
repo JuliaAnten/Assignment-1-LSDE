@@ -119,38 +119,30 @@ int main(int argc, char *argv[]) {
 
     	if(person->location != knows->location)continue;
 
+
+    			// friendship must be mutual
+    	for (knows_offset2 = knows->knows_first;
+    		knows_offset2 < knows->knows_first + knows->knows_n;
+    		knows_offset2++) {
+
+
+    		if (knows_map_old[knows_offset2] == person_offset) {
+
+			// Add it to new file
+    			knowsmap[knows_offset] = knows_map_old[knows_offset];
+
+    			break;
+    		}
+
+    	}
+
     	// Add it to new file
-    	knowsmap[knows_offset] = knows_map_old[knows_offset];
+    	//knowsmap[knows_offset] = knows_map_old[knows_offset];
 
     }
 
 }
 
-
-// This part should go through all the knows with respect to each person, but still works and omits more unneeded knows records
-for (knows_offset = person->knows_first; 
-	knows_offset < person->knows_first + person->knows_n; 
-	knows_offset++) {
-
-	knows = &person_map_old[knows_map_old[knows_offset]];
-
-			// friendship must be mutual
-	for (knows_offset2 = knows->knows_first;
-		knows_offset2 < knows->knows_first + knows->knows_n;
-		knows_offset2++) {
-
-
-		if (knows_map_old[knows_offset2] == person_offset) {
-
-			// Add it to new file
-			knowsmap[knows_offset] = knows_map_old[knows_offset];
-					
-			break;
-		}
-
-	}
-
-}
 
 
 // Remove the old file and rename the new to the old file
