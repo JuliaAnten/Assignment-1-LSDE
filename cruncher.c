@@ -161,8 +161,16 @@ void query(unsigned short qid, unsigned short artist, unsigned short areltd[], u
 		knows = &person_map[knows_offset];
 
 		//Print Results to file
-		fprintf(outfile, "%d|%d|%lu|%lu\n", qid, results[result_idx].score, 
-		person->person_id, knows->person_id);
+		for (knows_offset2 = person->knows_first;
+			knows_offset2 < person->knows_first + person->knows_n;
+			knows_offset2++) {
+			
+			if(knows_map[knows_offset2] == knows_offset) {
+
+				fprintf(outfile, "%d|%d|%lu|%lu\n", qid, results[result_idx].score, 
+					person->person_id, knows->person_id);
+			}
+		}
 
 	}
 }

@@ -96,18 +96,20 @@ int main(int argc, char *argv[]) {
 
     	    if(person->location != knows->location)continue;
 
-    		// checks mutuality
-    	    for (knows_offset2 = knows->knows_first;
-                knows_offset2 < knows->knows_first + knows->knows_n;
-                knows_offset2++) {
+    	    knowsmap[knows_offset] = knows_map_old[knows_offset];
+    	    
+    		// // checks mutuality
+    	 //    for (knows_offset2 = knows->knows_first;
+      //           knows_offset2 < knows->knows_first + knows->knows_n;
+      //           knows_offset2++) {
 
-                if (knows_map_old[knows_offset2] == person_offset) {
+      //           if (knows_map_old[knows_offset2] == person_offset) {
 
-                    // add it to new file
-                    knowsmap[knows_offset] = knows_map_old[knows_offset];
-                    break;
-                }
-            }
+      //               // add it to new file
+                    
+      //               break;
+      //           }
+      //       }
         }
     }
 
